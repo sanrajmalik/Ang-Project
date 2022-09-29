@@ -1,0 +1,37 @@
+<div class="px-4">
+    <div
+      class="
+       justify-center
+        items-center
+        bg-white
+        mx-auto
+        w-max
+        rounded-lg
+        mt-20
+      ">
+      <h1 class="text-2xl font-medium">User List ({{userlist.length}}) </h1>
+</div>
+</div>
+<div *ngIf ="userlist" class="container mt-4 mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div *ngFor="let user of userlist; let i = index" class="card m-2 ml-10 mr-10 border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
+        <div class="m-3">
+        <h2 class="text-lg mb-2">Name :{{user.fname}} {{user.lname}}</h2>
+        <h2 class="text-lg mb-2">Email :{{user.email}}</h2>
+        <div *ngIf="clickedIndex === i">
+            <h2 class="text-lg mb-2">City :{{user.address.city}}</h2>
+            <h2 class="text-lg mb-2">State :{{user.address.state}}</h2>
+            <h2 class="text-lg mb-2">Country :{{user.address.country}}</h2>
+            <h2 class="text-lg mb-2">Zip :{{user.address.zip}}</h2>
+        </div>
+        <button class="text-sm text-white font-mono bg-blue-500 inline rounded-full px-2 " (click)="clickedIndex  = i">More</button>
+        <button class="text-sm text-white font-mono bg-red-600 inline rounded-full px-2 float-right" (click)="deleteUser(user)">Delete</button>
+    </div>
+      </div>
+    </div>
+    <div class="flex space-x-2 space-y-2 flex-wrap justify-center items-baseline">
+        <button class="rounded-lg px-4 py-2 bg-blue-500 text-white hover:bg-blue-800 duration-300 mt-10 mb-20" routerLink="/register">Add User</button>
+     </div>
+</div>
+
+
